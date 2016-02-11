@@ -1,0 +1,24 @@
+{
+  "at": {
+    "name": "At",
+    "genotypes": {
+      "description": "",
+      "schedule": {
+        "germination": 1,
+        "floration": 2
+      }
+    }
+
+  },
+
+  "zz": {
+    "name": "zz",
+    "genotypes": {
+      "description": "",
+      "schedule": {
+        "germination": 1,
+        "floration": 2
+      }
+    }
+  }
+}
