@@ -5,7 +5,7 @@ $(window).ready(function(){
 		var showSpecies = ['<option value="" style="font-style: italic;">Please select species...</option>'];
 		var species = [];
 		var prettyNames = {
-			"arabidopsis": 'Arabidopsis thaliana',
+			"arabidopsis": 'A. thaliana',
 			"corn": 'Zea maiz',
 		};
 		var library = data.library;
@@ -34,7 +34,7 @@ $(window).ready(function(){
 								.append($('<input>')
 									.attr('type','checkbox')))
 							//rest of the table
-							.append($('<td>').text(variety[v].name))
+							.append($('<td>').text(prettyNames[sp]))
 							.append($('<td>').text(variety[v].genotype))
 							.append($('<td>').text(variety[v].description))
 							.append($('<td>').text(variety[v].growingCond))
@@ -55,11 +55,11 @@ $(window).ready(function(){
 	  	$("#selectSpecies").change(function(){
 	  		//
 	  		if($("#selectSpecies option:selected").val() === ''){
-	  			$('.species').hide();
+	  			$('.species').fadeOut( "fast" );
 	  		}else {
 	  			$('.species').hide();
 	  			var selectedSp = $("#selectSpecies option:selected").val();
-	  			$('.species.' + selectedSp).fadeIn( "slow" );
+	  			$('.species.' + selectedSp).fadeIn( "fast" );
 	  		}
 	  	});
 	  	
