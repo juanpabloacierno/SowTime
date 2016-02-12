@@ -12,6 +12,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -45,7 +46,7 @@
               <a href="#selection" aria-controls="selection" role="tab" data-toggle="tab">Choose variants</a>
             </li>
             <li role="presentation">
-              <a href="#datePickTab" aria-controls="datePickTab" role="tab" data-toggle="tab" id="datePicker">Choose dates and calculate</a>
+              <a href="#datePickTab" aria-controls="datePickTab" role="tab" data-toggle="tab" id="pickDates">Choose dates and calculate</a>
             </li>
             <li role="presentation" class="pull-right">
               <a href="#dbedit" aria-controls="dbedit" role="tab" data-toggle="tab" id="edit">Edit Database</a>
@@ -60,7 +61,7 @@
             </div>
             <hr/>
             <div>
-              <table class="table table-striped" id="variants">
+              <table class="table table-striped hidden" id="variants">
                 <thead>
                     <tr>
                         <th>Select</th>
@@ -100,6 +101,47 @@
             </div>  
             <hr/>
             <div>
+            
+                <div class="row">
+                  <div class="col-md-6" >
+                    <label>Please select calculation mode:</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="method" id="method1" value="option1" checked>
+                        Start sowing the soonest possible (Today???)
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="method" id="method2" value="option2">
+                        Start sowing on date...
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="method" id="method3" value="option3">
+                        Harvest the soonest possible...
+                      </label>
+                    </div>              
+                  </div>
+                  <div class="6" >
+                    <label>Pick date:</label>
+                    <div style="overflow:hidden;">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-10 ">
+                            <div id="datetimepicker"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <hr/>
+            Proposed date: <span id="propDate"></span>
+            <hr/>
+            <div>
               <button type="button" class="btn btn-danger" id="calculate">Calculate</button>
             </div>
           </div>
@@ -128,6 +170,8 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -148,6 +192,16 @@
     
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
+    <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker').datetimepicker({
+              inline: true,
+              format: 'L'
+          });
+      });
+    </script>
+    <script src="scripts/dates.js"></script>
     <!-- endbuild -->
   </body>
 </html>
+

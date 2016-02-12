@@ -23,7 +23,8 @@ $(window).ready(function(){
 				//populate table with varieties
 				$.each(variety, function(v,p){
 					//console.log(v,p)
-					$('#variants').find('tbody')
+					$('#variants')
+						.find('tbody')
 						.append($('<tr>')
 							//class to pull selected species
 							.addClass('species')
@@ -56,17 +57,17 @@ $(window).ready(function(){
 	  		//
 	  		if($('#selectSpecies option:selected').val() === ''){
 	  			$('.species').fadeOut( 'fast' );
+	  			$('#variants').addClass('hidden');
 	  		}else {
 	  			$('.species').hide();
+	  			$('#variants').removeClass('hidden');
 	  			var selectedSp = $('#selectSpecies option:selected').val();
 	  			$('.species.' + selectedSp).fadeIn( 'fast' );
 	  		}
 	  	});
-
-
 	  	
 	  	//display selected 
-	  	$('#datePicker').click(function(){
+	  	$('#pickDates').click(function(){
 
 	  		var sv = $('#selectVariants').find('tbody');
 
@@ -74,23 +75,24 @@ $(window).ready(function(){
 	  		sv.children().remove();
 
 	  		//selected specie (dropdown)
-			var selSpecies = $('#selectSpecies option:selected').val();
+			var selectedSpecies = $('#selectSpecies option:selected').val();
 
 			//selected variants (available genotypes)
-			var selVarieties = $('.species.' + selSpecies);
+			var selectedVarieties = $('.species.' + selectedSpecies);
 			
 			//select checked variants and move them to calc table
-			selVarieties
+			selectedVarieties
 				.find('input:checked')
 				.parents('tr')
 				.clone()
 				.appendTo(sv)
 				//remove previous checkboxes
 				.find('[type=checkbox]')
-					.parent().empty();
+					.parent().empty()
+					;
 
 	  	});
-
+		/******************************************/
 	  	
 
 		$('<pre/>', {
