@@ -41,9 +41,15 @@
         <!-- Tab panes -->
         <div class="tab-content col-lg-6">
           <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active"><a href="#selection" aria-controls="selection" role="tab" data-toggle="tab">Choose variants</a></li>
-            <li role="presentation"><a href="#calculate" aria-controls="calculate" role="tab" data-toggle="tab">Choose dates and calculate</a></li>
-            <li role="presentation" class="pull-right"><a href="#dbedit" aria-controls="dbedit" role="tab" data-toggle="tab" id="edit">Edit Database</a></li>
+            <li role="presentation" class="active">
+              <a href="#selection" aria-controls="selection" role="tab" data-toggle="tab">Choose variants</a>
+            </li>
+            <li role="presentation">
+              <a href="#datePickTab" aria-controls="datePickTab" role="tab" data-toggle="tab" id="datePicker">Choose dates and calculate</a>
+            </li>
+            <li role="presentation" class="pull-right">
+              <a href="#dbedit" aria-controls="dbedit" role="tab" data-toggle="tab" id="edit">Edit Database</a>
+            </li>
           </ul>
 
         <!-- Select variants -->
@@ -53,7 +59,7 @@
               <div class="col-sm-6" id="selectSpecies"></div>  
             </div>
             <hr/>
-            <div id="selectVariants">
+            <div>
               <table class="table table-striped" id="variants">
                 <thead>
                     <tr>
@@ -73,7 +79,31 @@
           </div>
 
 
-          <div role="tabpanel" class="tab-pane fade" id="calculate">.2.</div>
+          <div role="tabpanel" class="tab-pane fade" id="datePickTab">
+            <hr/>
+            <div class="row" id="">
+              <table class="table table-striped" id="selectVariants">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Species</th>
+                        <th>Genotype</th>
+                        <th>Description</th>
+                        <th>Growing Conditions</th>
+                        <th>Harvest days</th>
+                        <th>Floration days</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>  
+            <hr/>
+            <div>
+              <button type="button" class="btn btn-danger" id="calculate">Calculate</button>
+            </div>
+          </div>
+
           <div role="tabpanel" class="tab-pane fade" id="dbedit">.3. Under construction
           <div id="dbpre">
           </div></div>

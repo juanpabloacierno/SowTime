@@ -1,12 +1,12 @@
 $(window).ready(function(){
-		/*console.log("ok");*/
-	$.getJSON( "data/types.json", function( data ) {
+		/*console.log('ok');*/
+	$.getJSON( 'data/types.json', function( data ) {
 
 		var showSpecies = ['<option value="" style="font-style: italic;">Please select species...</option>'];
 		var species = [];
 		var prettyNames = {
-			"arabidopsis": 'A. thaliana',
-			"corn": 'Zea maiz',
+			'arabidopsis': 'A. thaliana',
+			'corn': 'Zea maiz',
 		};
 		var library = data.library;
 
@@ -17,13 +17,13 @@ $(window).ready(function(){
 			$.each( specie, function( sp , variety ) {
 
 				//populate species options
-				showSpecies.push( "<option value='" + sp + "'>" + prettyNames[sp] + "</option>" );
+				showSpecies.push( '<option value="' + sp + '">' + prettyNames[sp] + '</option>' );
 				species.push(sp);
 
 				//populate table with varieties
 				$.each(variety, function(v,p){
 					//console.log(v,p)
-					$("#variants").find('tbody')
+					$('#variants').find('tbody')
 						.append($('<tr>')
 							//class to pull selected species
 							.addClass('species')
@@ -46,29 +46,56 @@ $(window).ready(function(){
 			});
 		});
 		/******************************************/
-		$( "<select />", {
+		$( '<select />', {
 			html: showSpecies
-			}).appendTo( "#selectSpecies" )
+			}).appendTo('#selectSpecies')
 		  	.addClass('form-control');
 
 	  	//show varieties from selected species
-	  	$("#selectSpecies").change(function(){
+	  	$('#selectSpecies').change(function(){
 	  		//
-	  		if($("#selectSpecies option:selected").val() === ''){
-	  			$('.species').fadeOut( "fast" );
+	  		if($('#selectSpecies option:selected').val() === ''){
+	  			$('.species').fadeOut( 'fast' );
 	  		}else {
 	  			$('.species').hide();
-	  			var selectedSp = $("#selectSpecies option:selected").val();
-	  			$('.species.' + selectedSp).fadeIn( "fast" );
+	  			var selectedSp = $('#selectSpecies option:selected').val();
+	  			$('.species.' + selectedSp).fadeIn( 'fast' );
 	  		}
 	  	});
+
+
 	  	
+	  	//display selected 
+	  	$('#datePicker').click(function(){
+
+	  		var sv = $('#selectVariants').find('tbody');
+
+	  		//clear previously selected
+	  		sv.children().remove();
+
+	  		//selected specie (dropdown)
+			var selSpecies = $('#selectSpecies option:selected').val();
+
+			//selected variants (available genotypes)
+			var selVarieties = $('.species.' + selSpecies);
+			
+			//select checked variants and move them to calc table
+			selVarieties
+				.find('input:checked')
+				.parents('tr')
+				.clone()
+				.appendTo(sv)
+				//remove previous checkboxes
+				.find('[type=checkbox]')
+					.parent().empty();
+
+	  	});
 
 	  	
 
-		$( "<pre/>", {
+		$('<pre/>', {
 			html: JSON.stringify(data)
-			}).appendTo( "#dbpre" );
+			}).appendTo('#dbpre');
 
 
 
