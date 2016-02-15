@@ -40,10 +40,10 @@
       <div class="row marketing">
         
         <!-- Tab panes -->
-        <div class="tab-content col-lg-6">
+        <div class="tab-content">
           <ul class="nav nav-pills" role="tablist">
             <li role="presentation" class="active">
-              <a href="#selection" aria-controls="selection" role="tab" data-toggle="tab">Choose variants</a>
+              <a href="#selection" aria-controls="selection" role="tab" data-toggle="tab" id="choose">Choose variants</a>
             </li>
             <li role="presentation">
               <a href="#datePickTab" aria-controls="datePickTab" role="tab" data-toggle="tab" id="pickDates">Choose dates and calculate</a>
@@ -100,50 +100,53 @@
               </table>
             </div>  
             <hr/>
-            <div>
+            <div id="params" class="hidden">
             
-                <div class="row">
-                  <div class="col-md-6" >
-                    <label>Please select calculation mode:</label>
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="method" id="method1" value="option1" checked>
-                        Start sowing the soonest possible (Today???)
-                      </label>
-                    </div>
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="method" id="method2" value="option2">
-                        Start sowing on date...
-                      </label>
-                    </div>
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="method" id="method3" value="option3">
-                        Harvest the soonest possible...
-                      </label>
-                    </div>              
+              <div class="row">
+                <div class="col-md-6" >
+                  <label>Please select calculation mode:</label>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="method" id="method1" value="option1" checked>
+                      Start sowing the soonest possible (Today???)
+                    </label>
                   </div>
-                  <div class="6" >
-                    <label>Pick date:</label>
-                    <div style="overflow:hidden;">
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-md-10 ">
-                            <div id="datetimepicker"></div>
-                          </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="method" id="method2" value="option2">
+                      Start sowing on date...
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="method" id="method3" value="option3">
+                      Harvest the soonest possible...
+                    </label>
+                  </div>              
+                </div>
+                <div class="6" >
+                  <label>Pick date:</label>
+                  <div style="overflow:hidden;">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-10 ">
+                          <div id="datetimepicker"></div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <hr/>
+              Proposed date: <span id="propDate"></span>
+              <hr/>
+              <div>
+                <button type="button" class="btn btn-danger" id="calculate">Calculate</button>
+              </div>
+
             </div>
-            <hr/>
-            Proposed date: <span id="propDate"></span>
-            <hr/>
-            <div>
-              <button type="button" class="btn btn-danger" id="calculate">Calculate</button>
-            </div>
+            
           </div>
 
           <div role="tabpanel" class="tab-pane fade" id="dbedit">.3. Under construction

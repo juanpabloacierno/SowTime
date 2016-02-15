@@ -66,6 +66,11 @@ $(window).ready(function(){
 	  		}
 	  	});
 	  	
+	  	$('#choose').click(function(){
+	  		$('#params').addClass('hidden');	
+	  	});
+	  	
+
 	  	//display selected 
 	  	$('#pickDates').click(function(){
 
@@ -90,6 +95,11 @@ $(window).ready(function(){
 				.find('[type=checkbox]')
 					.parent().empty()
 					;
+
+	  		//display params div if something was selected
+	  		if( $('#selectVariants').find('tr').length > 1 ){
+	  			$('#params').removeClass('hidden');
+	  		}
 
 	  	});
 		/******************************************/
