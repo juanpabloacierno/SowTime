@@ -54,7 +54,7 @@ $(window).ready(function(){
 
 	  	//show varieties from selected species
 	  	$('#selectSpecies').change(function(){
-	  		//
+	  		//if nothing selected hide table
 	  		if($('#selectSpecies option:selected').val() === ''){
 	  			$('.species').fadeOut( 'fast' );
 	  			$('#variants').addClass('hidden');

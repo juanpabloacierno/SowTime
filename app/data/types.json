@@ -27,7 +27,7 @@
         "id": 2,
         "name": "Arabidopsis thaliana",
         "description": "blah blah 3",
-        "genotype": "opb-1",
+        "genotype": "vopb-1",
         "growingCond": "bleh bleh belh",
         "schedule": {
           "harvestDays": 50,
