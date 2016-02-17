@@ -1,5 +1,5 @@
 $(window).ready(function(){
-		/*console.log('ok');*/
+	//pull data	
 	$.getJSON( 'data/types.json', function( data ) {
 
 		var showSpecies = ['<option value="" style="font-style: italic;">Please select species...</option>'];
@@ -93,7 +93,7 @@ $(window).ready(function(){
 				.appendTo(sv)
 				//remove previous checkboxes
 				.find('[type=checkbox]')
-					.parent().empty()
+					.parent().remove()
 					;
 
 	  		//display params div if something was selected
