@@ -103,8 +103,20 @@ $(window).ready(function(){
 
 	  	});
 		/******************************************/
-	  	
+	  		
+		//calendar display
+		$('#calendar').fadeOut();
 
+		$('#sowondate').click(function(){
+			$('#calendar').fadeIn();
+		});
+
+		$('#harvestsoonest').click(function(){
+			$('#calendar').fadeOut();
+		});
+
+		/******************************************/
+		
 		$('<pre/>', {
 			html: JSON.stringify(data)
 			}).appendTo('#dbpre');
