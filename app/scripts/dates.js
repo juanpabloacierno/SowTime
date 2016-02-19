@@ -1,43 +1,43 @@
-$(window).ready(function(){
+$(window).ready(function() {
 
-	$('#calculate').click(function(){
+    $('#calculate').click(function() {
 
-		var selectedDate = $('.day.active').attr('data-day');
-		var selectedDate = moment(selectedDate,["MM-DD-YYYY", "DD-MM-YYYY"]);
+        var selectedDate = $('.day.active').attr('data-day');
+        var selectedDate = moment(selectedDate, ["MM-DD-YYYY", "DD-MM-YYYY"]);
 
-		$('#propDate').html(selectedDate);
+        $('#propDate').html(selectedDate);
 
-		//set with selected data
-		var varietiesSet = {};
+        //set with selected data
+        var varietiesSet = {};
 
-		//data categories
-		var props = ['sp','genotype','desc','gc','hd','fd'];
+        //data categories
+        var props = ['sp', 'genotype', 'desc', 'gc', 'hd', 'fd'];
 
-		//selection
-		var selectedVariants = $('#selectVariants').find('tr.species');
-		
-		//build obj with selected varieties
-		for(var i=0;i<selectedVariants.length;i++){
-			varietiesSet[i] = {};
-			for (var j = 0 ; j < selectedVariants[i].children.length; j++) {
-				varietiesSet[i][ props[j] ] = selectedVariants[i].children[j].innerHTML;
-			}
-		}
-		//calculation set
-		var calcSet = {};
-		for(var v in varietiesSet){
-			calcSet[ varietiesSet[v].genotype ] = varietiesSet[v].hd;
-		}
+        //selection
+        var selectedVariants = $('#selectVariants').find('tr.species');
 
-		//get selected method
-		var method = $('input[name="method"]:checked').val();
+        //build obj with selected varieties
+        for (var i = 0; i < selectedVariants.length; i++) {
+            varietiesSet[i] = {};
+            for (var j = 0; j < selectedVariants[i].children.length; j++) {
+                varietiesSet[i][props[j]] = selectedVariants[i].children[j].innerHTML;
+            }
+        }
+        //calculation set
+        var calcSet = {};
+        for (var v in varietiesSet) {
+            calcSet[varietiesSet[v].genotype] = varietiesSet[v].hd;
+        }
 
-		method === 'harvestsoonest' ? selectedDate = null : selectedDate;
+        //get selected method
+        var method = $('input[name="method"]:checked').val();
 
-		var results = calcSowDates(calcSet,method,selectedDate);
-		console.log(results);
+        method === 'harvestsoonest' ? selectedDate = null : selectedDate;
 
-	});
+        var results = calcSowDates(calcSet, method, selectedDate);
+        console.log(results);
+
+    });
 
 
 
@@ -50,52 +50,52 @@ $(window).ready(function(){
 		sowondate
 	@selectedDate if null today
 */
-function calcSowDates(inputSet, method, selectedDate){
+function calcSowDates(inputSet, method, selectedDate) {
 
-	method = method || 'harvestsoonest';
-	selectedDate = selectedDate || moment();
-	if(Object.keys(inputSet).length < 2){
-		console.log("Select at least two options, corneta");
-		return;
-	}
-	var resultDates = {};
-	var sortedSet = [];
-	sortedSet = convertObjToArr(inputSet);
-	//get larger value from sortedSet
+    method = method || 'harvestsoonest';
+    selectedDate = selectedDate || moment();
+    if (Object.keys(inputSet).length < 2) {
+        console.log("Select at least two options, corneta");
+        return;
+    }
+    var resultDates = {};
+    var sortedSet = [];
+    sortedSet = convertObjToArr(inputSet);
+    //get larger value from sortedSet
     var totalDays = parseInt(sortedSet[0][1]);
 
     //custom selectedDate selected
-    if(method !== 'harvestsoonest'){
-    	//difference between selected date and now, the + 1 includes the day of today
-    	var increment = parseInt(selectedDate.diff(moment(),'days')) + 1;
-    	for (var i = sortedSet.length - 1; i >= 0; i--) {
-			var delta = totalDays - parseInt(sortedSet[i][1]) + increment ;
-    		resultDates[ sortedSet[i][0] ] = moment().add(delta,'days');
-    	}
-    	var doneDate = moment().add(totalDays + increment,'days');
-    } else { 
-    	//Finish the soonest possible
-    	for (var i = sortedSet.length - 1; i >= 0; i--) {
-    		var delta = totalDays - parseInt(sortedSet[i][1]);
-    		resultDates[ sortedSet[i][0] ] = moment().add(delta,'days');
-    	}
-    	var doneDate = moment().add(totalDays,'days');
+    if (method !== 'harvestsoonest') {
+        //difference between selected date and now, the + 1 includes the day of today
+        var increment = parseInt(selectedDate.diff(moment(), 'days')) + 1;
+        for (var i = sortedSet.length - 1; i >= 0; i--) {
+            var delta = totalDays - parseInt(sortedSet[i][1]) + increment;
+            resultDates[sortedSet[i][0]] = moment().add(delta, 'days');
+        }
+        var doneDate = moment().add(totalDays + increment, 'days');
+    } else {
+        //Finish the soonest possible
+        for (var i = sortedSet.length - 1; i >= 0; i--) {
+            var delta = totalDays - parseInt(sortedSet[i][1]);
+            resultDates[sortedSet[i][0]] = moment().add(delta, 'days');
+        }
+        var doneDate = moment().add(totalDays, 'days');
     }
     resultDates['initialDate'] = selectedDate;
     resultDates['doneDate'] = doneDate;
 
-	return resultDates;
-}	
+    return resultDates;
+}
 
 //convert object to array to be sorted
-function convertObjToArr(inObj){
-	var outArr = [];
-	for (var key in inObj){
-		outArr.push([key, inObj[key]])
-	}
-	//sort by values decreasing
+function convertObjToArr(inObj) {
+    var outArr = [];
+    for (var key in inObj) {
+        outArr.push([key, inObj[key]])
+    }
+    //sort by values decreasing
     outArr.sort(function(a, b) {
-    	return b[1] - a[1]
+        return b[1] - a[1]
     });
     return outArr;
 }
