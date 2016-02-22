@@ -3,11 +3,11 @@ $(window).ready(function() {
     $('#calculate').click(function() {
 
         var selectedDate = $('.day.active').attr('data-day');
-        var selectedDate = moment(selectedDate, ["MM-DD-YYYY", "DD-MM-YYYY"]);
+        var selectedDate = moment(selectedDate, ['MM-DD-YYYY', 'DD-MM-YYYY']);
 
         $('#propDate').html(selectedDate);
 
-        //set with selected data
+        //selected data
         var varietiesSet = {};
 
         //data categories
@@ -16,7 +16,7 @@ $(window).ready(function() {
         //selection
         var selectedVariants = $('#selectVariants').find('tr.species');
 
-        //build obj with selected varieties
+        //build object with selected varieties
         for (var i = 0; i < selectedVariants.length; i++) {
             varietiesSet[i] = {};
             for (var j = 0; j < selectedVariants[i].children.length; j++) {
@@ -72,7 +72,7 @@ function calcSowDates(inputSet, method, selectedDate) {
     method = method || 'harvestsoonest';
     selectedDate = selectedDate || moment();
     if (Object.keys(inputSet).length < 2) {
-        console.log("Select at least two options, corneta");
+        console.log('Select at least two options, corneta');
         return;
     }
     var resultDates = {};

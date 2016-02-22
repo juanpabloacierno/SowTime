@@ -1,6 +1,6 @@
 $(window).ready(function() {
     //pull data	
-    $.getJSON('data/types.json', function(data) {
+    $.getJSON('data.json', function(data) {
 
         var showSpecies = ['<option value="" style="font-style: italic;">Please select species...</option>'];
         var species = [];
