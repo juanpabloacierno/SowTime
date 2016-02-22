@@ -35,8 +35,25 @@ $(window).ready(function() {
         method === 'harvestsoonest' ? selectedDate = null : selectedDate;
 
         var results = calcSowDates(calcSet, method, selectedDate);
-        console.log(results);
+        
+        //clean tbody on each click
+        $('#resultDates').find('tbody').children().remove();
 
+        $('#initD').text(results.initialDate.format('L'));
+        $('#endD').text(results.doneDate.format('L'));
+
+        delete(results.initialDate);
+        delete(results.doneDate);
+
+        //populate results
+        $.each(results, function(index, value) {
+        	$('#resultDates')
+	            .find('tbody')
+	            .append($('<tr>')
+	            	.append($('<td>').text(index))
+	            	.append($('<td>').text(value.format('L')))
+            	);
+		}); 
     });
 
 
