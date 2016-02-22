@@ -106,6 +106,12 @@ $(window).ready(function() {
         $('#calendar').fadeOut();
 
         $('#sowondate').click(function() {
+      
+			$('#datetimepicker').datetimepicker({
+			  inline: true,
+			  format: 'L'
+			});
+      
             $('#calendar').fadeIn();
         });
 
