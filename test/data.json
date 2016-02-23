@@ -9,7 +9,7 @@
         "growingCond": "bleh bleh belh",
         "schedule": {
           "harvestDays": 30,
-          "floweringDays": 45
+          "florationDays": 45
         }
       },
       "variety2": {
@@ -20,7 +20,7 @@
         "growingCond": "bleh bleh belh",
         "schedule": {
           "harvestDays": 35,
-          "floweringDays": 55
+          "florationDays": 55
         }
       },
       "variety3": {
@@ -31,7 +31,7 @@
         "growingCond": "bleh bleh belh",
         "schedule": {
           "harvestDays": 50,
-          "floweringDays": 65
+          "florationDays": 65
         }
       }
     }
@@ -45,7 +45,7 @@
         "growingCond": "",
         "schedule": {
           "harvestDays": 1,
-          "floweringDays": 2
+          "florationDays": 2
         }
       },
       "variety2": {
@@ -56,7 +56,7 @@
         "growingCond": "",
         "schedule": {
           "harvestDays": 3,
-          "floweringDays": 4
+          "florationDays": 4
         }
       }
     }

@@ -40,7 +40,7 @@ $(window).ready(function() {
                             .append($('<td>').text(variety[v].description))
                             .append($('<td>').text(variety[v].growingCond))
                             .append($('<td>').text(variety[v].schedule.harvestDays))
-                            .append($('<td>').text(variety[v].schedule.florationDays))
+                            .append($('<td>').text(variety[v].schedule.floweringDays))
                     );
                 });
             });

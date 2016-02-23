@@ -35,28 +35,29 @@ $(window).ready(function() {
         method === 'harvestsoonest' ? selectedDate = null : selectedDate;
 
         var results = calcSowDates(calcSet, method, selectedDate);
-        
+
         //clean tbody on each click
         $('#resultDates').find('tbody').children().remove();
 
-        $('#initD').text(results.initialDate.format('L'));
-        $('#endD').text(results.doneDate.format('L'));
+        if(results !== undefined){
+	        $('#initD').text(results.initialDate.format('L'));
+	        $('#endD').text(results.doneDate.format('L'));
 
-        delete(results.initialDate);
-        delete(results.doneDate);
+	        delete(results.initialDate);
+	        delete(results.doneDate);
 
-        //populate results
-        $.each(results, function(index, value) {
-        	$('#resultDates')
-	            .find('tbody')
-	            .append($('<tr>')
-	            	.append($('<td>').text(index))
-	            	.append($('<td>').text(value.format('L')))
-            	);
-		}); 
+	        //populate results
+	        $.each(results, function(index, value) {
+	        	$('#resultDates')
+		            .find('tbody')
+		            .append($('<tr>')
+		            	.append($('<td>').text(index))
+		            	.append($('<td>').text(value.format('L')))
+	            	);
+			});         	
+        }
+
     });
-
-
 
 });
 
@@ -72,7 +73,7 @@ function calcSowDates(inputSet, method, selectedDate) {
     method = method || 'harvestsoonest';
     selectedDate = selectedDate || moment();
     if (Object.keys(inputSet).length < 2) {
-        console.log('Select at least two options, corneta');
+        alert('Select at least two options, corneta');
         return;
     }
     var resultDates = {};
