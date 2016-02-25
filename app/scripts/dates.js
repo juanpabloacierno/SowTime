@@ -39,34 +39,36 @@ $(window).ready(function() {
         //clean tbody on each click
         $('#resultDates').find('tbody').children().remove();
 
-        if(results !== undefined){
-	        $('#initD').text(results.initialDate.format('L'));
-	        $('#endD').text(results.doneDate.format('L'));
+        if (results !== undefined) {
+            $('#initD').text(results.initialDate.format('L'));
+            $('#endD').text(results.doneDate.format('L'));
 
-	        delete(results.initialDate);
-	        delete(results.doneDate);
+            delete(results.initialDate);
+            delete(results.doneDate);
 
-	        //populate results
-	        $.each(results, function(index, value) {
-	        	$('#resultDates')
-		            .find('tbody')
-		            .append($('<tr>')
-		            	.append($('<td>').text(index))
-		            	.append($('<td>').text(value.format('L')))
-	            	);
-			});         	
+            //populate results
+            $.each(results, function(index, value) {
+                $('#resultDates')
+                    .find('tbody')
+                    .append($('<tr>')
+                        .append($('<td>').text(index))
+                        .append($('<td>').text(value.format('L')))
+                );
+            });
         }
 
     });
 
 });
 
-/*
-	@inputSet object with selected vars
-	@method type of calculation
-		harvestsoonest
-		sowondate
-	@selectedDate if null today
+/**
+ * calcSowDates() returns a new object with 
+ * all the input sorted by date of sow
+ *
+ * 	@param {Object} inputSet 
+ *	@param {String} method
+ *	@param {moment} selectedDate
+ *  @return {Object} resultDates
 */
 function calcSowDates(inputSet, method, selectedDate) {
 
@@ -79,11 +81,13 @@ function calcSowDates(inputSet, method, selectedDate) {
     var resultDates = {};
     var sortedSet = [];
     sortedSet = convertObjToArr(inputSet);
+
     //get larger value from sortedSet
     var totalDays = parseInt(sortedSet[0][1]);
 
     //custom selectedDate selected
     if (method !== 'harvestsoonest') {
+
         //difference between selected date and now, the + 1 includes the day of today
         var increment = parseInt(selectedDate.diff(moment(), 'days')) + 1;
         for (var i = sortedSet.length - 1; i >= 0; i--) {
@@ -92,6 +96,7 @@ function calcSowDates(inputSet, method, selectedDate) {
         }
         var doneDate = moment().add(totalDays + increment, 'days');
     } else {
+
         //Finish the soonest possible
         for (var i = sortedSet.length - 1; i >= 0; i--) {
             var delta = totalDays - parseInt(sortedSet[i][1]);
@@ -105,12 +110,21 @@ function calcSowDates(inputSet, method, selectedDate) {
     return resultDates;
 }
 
-//convert object to array to be sorted
+//convert object to array of arrays to be sorted
+/**
+ * convertObjToArr() returns an array of arrays of
+ * property: value for each in the input and sort
+ * the resulting array by decreasing values
+ *
+ *  @param {Object} inObj
+ *  @return {Array} outArr
+ */
 function convertObjToArr(inObj) {
     var outArr = [];
     for (var key in inObj) {
         outArr.push([key, inObj[key]])
     }
+
     //sort by values decreasing
     outArr.sort(function(a, b) {
         return b[1] - a[1]

@@ -11,8 +11,10 @@ $(window).ready(function() {
         var library = data.library;
 
         /******************************************/
+
         //iterate along species
         $.each(library, function(key, specie) {
+
             //iterate along varieties
             $.each(specie, function(sp, variety) {
 
@@ -22,18 +24,20 @@ $(window).ready(function() {
 
                 //populate table with varieties
                 $.each(variety, function(v, p) {
-                    //console.log(v,p)
                     $('#variants')
                         .find('tbody')
                         .append($('<tr>')
+
                             //class to pull selected species
                             .addClass('species')
                             .addClass(sp)
                             .hide()
+
                             //checkbox to select varieties
                             .append($('<td>')
                                 .append($('<input>')
                                     .attr('type', 'checkbox')))
+
                             //rest of the table
                             .append($('<td>').text(prettyNames[sp]))
                             .append($('<td>').text(variety[v].genotype))
@@ -53,6 +57,7 @@ $(window).ready(function() {
 
         //show varieties from selected species
         $('#selectSpecies').change(function() {
+
             //if nothing selected hide table
             if ($('#selectSpecies option:selected').val() === '') {
                 $('.species').fadeOut('fast');
@@ -90,6 +95,7 @@ $(window).ready(function() {
                 .parents('tr')
                 .clone()
                 .appendTo(sv)
+                
             //remove previous checkboxes
             .find('[type=checkbox]')
                 .parent().remove();
