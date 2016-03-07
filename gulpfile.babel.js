@@ -5,8 +5,20 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
+
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+
+/*var mocha = require('gulp-mocha');
+ 
+gulp.task('default', function () {
+  return gulp.src('test/spec/test.js', {read: false})
+    // gulp-mocha needs filepaths so you can't have any plugins before it 
+    .pipe(mocha({reporter: 'JP'}));
+});
+*/
+
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.css')
