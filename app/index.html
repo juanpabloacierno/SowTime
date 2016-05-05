@@ -139,6 +139,13 @@
                   </tbody>
                 </table>
               </div>
+              <div id="authorize-div" class="col-md-2">
+                <!-- <span>Authorize access to Google Calendar API</span> -->
+                <!--Button for the user to click to initiate auth sequence -->
+                <button id="authorize-button" class="btn btn-success" onclick="handleAuthClick(event)">
+                  Push to Google Calendar
+                </button>
+              </div>
             </div>
           </div>
           <div role="tabpanel" class="tab-pane fade" id="dbedit">.3. Under construction
@@ -182,11 +189,13 @@
     <script src="/bower_components/bootstrap/js/collapse.js"></script>
     <script src="/bower_components/bootstrap/js/tab.js"></script>
     <script src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>    
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
     <!-- endbuild -->
     
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <script src="scripts/dates.js"></script>
+    <script src="scripts/pushToCal.js"></script>
     <!-- endbuild -->
   </body>
 </html>
