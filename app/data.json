@@ -1,64 +1,84 @@
 {
   "library": [{
-    "arabidopsis": {
-      "variety1": {
-        "id": 0,
-        "name": "Arabidopsis thaliana",
-        "description": "blah blah 1",
-        "genotype": "opb-1",
-        "growingCond": "bleh bleh belh",
-        "schedule": {
-          "harvestDays": 30,
-          "floweringDays": 45
-        }
-      },
-      "variety2": {
-        "id": 1,
-        "name": "Arabidopsis thaliana",
-        "description": "blah blah 2",
-        "genotype": "tra-1",
-        "growingCond": "bleh bleh belh",
-        "schedule": {
-          "harvestDays": 35,
-          "floweringDays": 55
-        }
-      },
-      "variety3": {
-        "id": 2,
-        "name": "Arabidopsis thaliana",
-        "description": "blah blah 3",
-        "genotype": "vopb-1",
-        "growingCond": "bleh bleh belh",
-        "schedule": {
-          "harvestDays": 50,
-          "floweringDays": 65
-        }
+    "species": "arabidopsis",
+    "fullName": "Arabidopsis thaliana",
+    "genotypes": [{
+      "genotype": "Col",      
+      "description": "Col",
+      "vern": "n",
+      "temp.bf": 22,
+      "temp.af": 15,
+      "phot.af": 8,      
+      "growingCond": "growingCond",
+      "schedule": {
+        "harvestDays": 132,
+        "floweringDays": 45
       }
-    }
+    }, {
+      "genotype": "vip3",      
+      "description": "Vip3",
+      "vern": "n",
+      "temp.bf": 22,
+      "temp.af": 15,
+      "phot.af": 8,      
+      "growingCond": "growingCond",
+      "schedule": {
+        "harvestDays": 140,
+        "floweringDays": 55
+      }
+    }, {
+      "genotype": "vrn2",      
+      "description": "Vrn2",
+      "vern": "n",
+      "temp.bf": 22,
+      "temp.af": 15,
+      "phot.af": 8,      
+      "growingCond": "growingCond",
+      "schedule": {
+        "harvestDays": 149,
+        "floweringDays": 65
+      }
+    }, {
+      "genotype": "vrn3",      
+      "description": "Vrn3",
+      "vern": "n",
+      "temp.bf": 22,
+      "temp.af": 15,
+      "phot.af": 8,      
+      "growingCond": "growingCond",
+      "schedule": {
+        "harvestDays": 149,
+        "floweringDays": 64
+      }
+    }]
+
   }, {
-    "corn": {
-      "variety1": {
-        "id": 0,
-        "name": "Corn cornus",
-        "description": "d1",
-        "genotype": "g1",
-        "growingCond": "",
-        "schedule": {
-          "harvestDays": 1,
-          "floweringDays": 2
-        }
-      },
-      "variety2": {
-        "id": 1,
-        "name": "Corn cornus",
-        "description": "d2",
-        "genotype": "g2",
-        "growingCond": "",
-        "schedule": {
-          "harvestDays": 3,
-          "floweringDays": 4
-        }
+    "species": "corn",
+    "fullName": "Zea mayz",
+    "genotypes": [{
+      "genotype": "g1",      
+      "description": "d1",
+      "vern": "n",
+      "temp.bf": 22,
+      "temp.af": 15,
+      "phot.af": 8,      
+      "growingCond": "",
+      "schedule": {
+        "harvestDays": 1,
+        "floweringDays": 2
       }
-    }
+    }, {
+      "genotype": "g2",      
+      "description": "d2",
+      "vern": "n",
+      "temp.bf": 22,
+      "temp.af": 15,
+      "phot.af": 8,      
+      "growingCond": "",
+      "schedule": {
+        "harvestDays": 3,
+        "floweringDays": 4
+      }
+    }]
   }]
 }
